@@ -283,7 +283,7 @@ export struct ListPage {
 
   // 处理任务更改
   handleTaskChange() {
-    //2.更新任务总数量
+    //1.更新任务总数量
     this.totalTask = this.taskList.length
     //2.更新已完成任务数量
     this.finishTask = this.taskList.filter(item => item.isCompleted).length

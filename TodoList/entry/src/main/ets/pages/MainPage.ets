@@ -29,6 +29,10 @@ struct MainPage {
 
   aboutToAppear() {
     this.taskList = TaskHelper.readTaskList()
+    //1.更新任务总数量
+    this.totalTask = this.taskList.length
+    //2.更新已完成任务数量
+    this.finishTask = this.taskList.filter(item => item.isCompleted).length
   }
 
   build() {
