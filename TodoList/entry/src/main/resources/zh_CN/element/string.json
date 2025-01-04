@@ -1,0 +1,184 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "模块描述"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "描述"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "待办清单"
+    },
+    {
+      "name": "Add_task",
+      "value": "新增任务"
+    },
+    {
+      "name": "enter_task_content",
+      "value": "请输入任务内容"
+    },
+    {
+      "name": "not_empty",
+      "value": "任务内容不得为空"
+    },
+    {
+      "name": "delete",
+      "value": "删除 !!!"
+    },
+    {
+      "name": "sure_delete",
+      "value": "确定要删除吗？"
+    },
+    {
+      "name": "yes",
+      "value": "是"
+    },
+    {
+      "name": "no",
+      "value": "否"
+    },
+    {
+      "name": "my_task",
+      "value": "我的任务"
+    },
+    {
+      "name": "all",
+      "value": "全部"
+    },
+    {
+      "name": "todo",
+      "value": "待办"
+    },
+    {
+      "name": "finish",
+      "value": "完成"
+    },
+    {
+      "name": "submit",
+      "value": "提交"
+    },
+    {
+      "name": "task_progress",
+      "value": "任务进度"
+    },
+    {
+      "name": "welcome",
+      "value": "欢迎使用待办清单"
+    },
+    {
+      "name": "no_task",
+      "value": "暂无任务，请添加"
+    },
+    {
+      "name": "cancel_changes",
+      "value": "取消更改"
+    },
+    {
+      "name": "change_theme",
+      "value": "更换主题"
+    },
+    {
+      "name": "prompt",
+      "value": "提示"
+    },
+    {
+      "name": "sure_change_theme",
+      "value": "确认要更换主题吗？"
+    },
+    {
+      "name": "cancel",
+      "value": "取消"
+    },
+    {
+      "name": "confirm",
+      "value": "确认"
+    },
+    {
+      "name": "default",
+      "value": "默认"
+    },
+    {
+      "name": "pink",
+      "value": "粉色"
+    },
+    {
+      "name": "grey",
+      "value": "灰色"
+    },
+    {
+      "name": "orange",
+      "value": "橙色"
+    },
+    {
+      "name": "green",
+      "value": "绿色"
+    },
+    {
+      "name": "blue",
+      "value": "蓝色"
+    },
+    {
+      "name": "purple",
+      "value": "紫色"
+    },
+    {
+      "name": "more",
+      "value": "敬请期待..."
+    },
+    {
+      "name": "advertisement",
+      "value": "待办清单，让生活简单点~"
+    },
+    {
+      "name": "change_text",
+      "value": "更改文本"
+    },
+    {
+      "name": "sure_change_text",
+      "value": "是否更改文本？"
+    },
+    {
+      "name": "change_succeeded",
+      "value": "更改成功"
+    },
+    {
+      "name": "task_content",
+      "value": "任务内容："
+    },
+    {
+      "name": "create_time",
+      "value": "创建时间："
+    },
+    {
+      "name": "click_modify",
+      "value": "点击修改"
+    },
+    {
+      "name": "importance",
+      "value": "重要程度"
+    },
+    {
+      "name": "red",
+      "value": "红色"
+    },
+    {
+      "name": "yellow",
+      "value": "黄色"
+    },
+    {
+      "name": "cyan",
+      "value": "青色"
+    },
+    {
+      "name": "white",
+      "value": "白色"
+    },
+    {
+      "name": "ai_summary",
+      "value": "AI总结"
+    }
+  ]
+}
