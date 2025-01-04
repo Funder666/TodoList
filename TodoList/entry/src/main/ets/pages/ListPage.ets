@@ -243,9 +243,10 @@ export struct ListPage {
             this.handleTaskChange()
           })
         }
-        .width('100%')
-        .margin({ top: 130 })
+        // .width('100%')
+        // .margin({ top: 130 })
         .alignItems(HorizontalAlign.End)
+        .position({ bottom: 100, right: 10 })  // 定位到右下角
 
         //调用AI按钮
         Column() {
@@ -268,9 +269,10 @@ export struct ListPage {
             this.handleTaskChange()
           })
         }
-        .width('100%')
-        .margin({ top: 130 })
+        // .width('100%')
+        // .margin({ top: 130 })
         .alignItems(HorizontalAlign.Start)
+        .position({ bottom: 100, left: 10 })  // 定位到左下角
       }
     }
     .width('100%')
