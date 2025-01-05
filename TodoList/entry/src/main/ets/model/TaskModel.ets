@@ -1,5 +1,5 @@
 /**
- * 人任务类
+ * 任务类
  */
 export class TaskModel {
   // 任务id

@@ -7,6 +7,7 @@ import { ListPage } from './ListPage'
 import { TaskModel } from '../model/TaskModel'
 import { ThemesPage } from './ThemesPage'
 import { AIPage } from './AIPage'
+import { SummaryPage } from './SummaryPage'
 
 @Entry
 @Component
@@ -15,6 +16,7 @@ struct MainPage {
   @State displayAddPage: boolean = false
   @State displayThemesPage: boolean = false
   @State displayAIPage: boolean = false
+  @State displaySummaryPage:boolean = false
   // 任务列表
   @State @Watch('saveTaskList') taskList: Array<TaskModel> = []
   // 总任务数量
@@ -53,9 +55,22 @@ struct MainPage {
       AIPage({
         displayAIPage: $displayAIPage,
         taskList: $taskList,
-        bgColor: $bgColor
+        finishTask:$finishTask,
+        totalTask:$totalTask,
+        bgColor: $bgColor,
+        displaySummaryPage:$displaySummaryPage
       })
-    } else {
+
+    }
+    else if (this.displaySummaryPage) {
+      SummaryPage({
+        displaySummaryPage: $displaySummaryPage,
+        taskList: $taskList,
+        bgColor: $bgColor,
+        displayAIPage: $displayAIPage,
+      })
+
+    }else {
       ListPage({
         displayAddPage: $displayAddPage,
         displayThemesPage: $displayThemesPage,
