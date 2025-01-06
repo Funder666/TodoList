@@ -19,9 +19,16 @@ export class TaskHelper {
   }
   static getTaskContent(taskList: Array<TaskModel>){
     let content:string=""
+    let content_complete:string="已经完成的任务有："
+    let content_incomplete:string="还未完成的任务有："
     for(let i=0;i<taskList.length;i++){
-      content+=i.toString()+":"+ taskList[i].taskContent
+      if(taskList[i].isCompleted){
+        content_complete+=taskList[i].taskContent+"，"
+      }else{
+        content_incomplete+=taskList[i].taskContent+"，"
+      }
     }
+    content=content_complete+content_incomplete
     console.log(content)
     return content
   }

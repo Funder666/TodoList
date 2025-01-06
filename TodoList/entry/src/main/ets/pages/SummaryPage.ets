@@ -88,7 +88,6 @@ export struct SummaryPage {
           // 当输入框内容发生变化时触发该函数
           .onClick(async () => {
             console.log("before")
-            this.taskType='todo'
             let a=TaskHelper.getTaskContent(this.getTaskList())
             console.log("after")
             this.answer= await LLM.getHttpResult("根据以下设定的任务以不超过200个字做出总结与规划："+a)
