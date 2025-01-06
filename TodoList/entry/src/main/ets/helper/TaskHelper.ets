@@ -17,7 +17,14 @@ export class TaskHelper {
     // 如果没有找到，返回-1
     return -1
   }
-
+  static getTaskContent(taskList: Array<TaskModel>){
+    let content:string=""
+    for(let i=0;i<taskList.length;i++){
+      content+=i.toString()+":"+ taskList[i].taskContent
+    }
+    console.log(content)
+    return content
+  }
   // 保存任务列表
   static saveTaskList(taskList: Array<TaskModel>) {
     // 使用FileHelper类的saveJsonData方法，将任务列表数据保存到task.data文件中

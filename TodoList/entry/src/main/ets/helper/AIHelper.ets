@@ -3,55 +3,59 @@ import httpService from './Http';
 import http from '@ohos.net.http';
 
 const TAG: string = "[TongYiThousandQHttp]"
-const API_KEY = 'xxx';
-const GENERATION_URL = "https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation";
 
-export class TongYiThousandQHttp {
+const GENERATION_URL = "http://49.52.27.74:11434/api/generate";
+
+export class LLM {
+
   public static openSEE: boolean = true
-  private prompt: string = ''
-  private result: string = ''
-  private requestOptions: http.HttpRequestOptions = {}
 
-  constructor(prompt: string) {
-    this.prompt = prompt
-  }
 
-  InitParam() {
-    this.requestOptions = {
+
+  static async getHttpResult(prompt: string): Promise<string> {
+    let res: string = "";
+    let option: http.HttpRequestOptions = {
       method: http.RequestMethod.POST,
       header: {
         "Content-Type": 'application/json',
-        Authorization: `Bearer ${API_KEY}`,
-        'X-DashScope-SSE': 'enable'
       },
       extraData: {
-        model: 'qwen-turbo',
-        input: {
-          messages: [{ 'role': 'system', 'content': 'You are a helpful assistant.' },
-            { 'role': 'user', 'content': this.prompt }]
-        },
-        parameters: {
-          result_format: "message"
+        "model": "qwen2.5:32b",
+        "prompt": prompt,
+        "stream": false
+      },
+      expectDataType:0
+    };
+
+    try {
+      let httpRequest = http.createHttp();
+
+      let promise = await httpRequest.request(GENERATION_URL, option);
+
+      if (promise && promise.result) {
+        try {
+          // 假设 result 是 JSON 格式字符串
+
+          const resultObj:string = JSON.parse(promise.result.toString());
+
+          // 提取 response 字段
+          if (resultObj["response"]) {
+            res = resultObj["response"];
+            console.log("提取的 response 字段: ", res);
+          } else {
+            console.error("未找到 response 字段:?",promise.result["response"]);
+          }
+        } catch (parseError) {
+          console.error("解析 result 失败: ", parseError.message);
         }
+      } else {
+        console.error("请求结果无效: ", promise);
       }
+    } catch (error) {
+      console.error("HTTP 请求失败: ", error.message);
     }
+
+    return res;
   }
 
-  getHttpResult(callback: (result: string, time: number) => void) {
-    let time1: Date = new Date();
-    this.InitParam()
-    httpService.requestHttpWithOption(GENERATION_URL, this.requestOptions).then((data: http.HttpResponse) => {
-      console.info(TAG, "send request sucess,the response is:" + JSON.stringify(data));
-      let time2: Date = new Date();
-      let costTime = time2.getTime() - time1.getTime();
-      if (data.responseCode != 200 || data.responseCode == null) {
-        this.result = '获取结果失败，请重试'
-      } else {
-        this.result = data.result as string
-      }
-      callback(this.result, costTime)
-    }).catch((err: Error) => {
-      console.info(TAG, 'error:' + JSON.stringify(err));
-    });
-  }
 }

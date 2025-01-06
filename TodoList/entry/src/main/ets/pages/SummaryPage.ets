@@ -2,7 +2,8 @@
 
 import { TaskModel } from '../model/TaskModel'
 import { http } from '@kit.NetworkKit';
-
+import {LLM} from '../helper/AIHelper'
+import { TaskHelper } from '../helper/TaskHelper'
 @Preview
 @Component
 export struct SummaryPage {
@@ -12,9 +13,9 @@ export struct SummaryPage {
   @Link displayAIPage: boolean
   @State taskType: string = 'all'
   @State AIAnswer: string=""
-
-
-
+  @State answer:string=""
+  @State click:boolean=true
+  @State tasks:string=""
 
   build() {
     Column({ space: 20 }) {
@@ -26,7 +27,7 @@ export struct SummaryPage {
             .fillColor(Color.Black)
             .onClick(() => {
               this.displaySummaryPage=false
-              this.displayAIPage = true;
+
             })
         }
         .width('100%')
@@ -38,7 +39,7 @@ export struct SummaryPage {
           .fontWeight(FontWeight.Bold)
       }
 
-        //显示任务
+      Scroll(){//显示任务
       Column() {
 
         // 如果任务列表为空，则显示提示信息
@@ -57,6 +58,7 @@ export struct SummaryPage {
 
               this.getTaskList(),
               (item: TaskModel, index) => {
+
                 ListItem() {
                   Row() {
                     //完成待办后的样式
@@ -69,17 +71,40 @@ export struct SummaryPage {
             )
           }
           .card()
-          .backgroundColor("white")
+          .backgroundColor("white")}
+          //提交按钮
+          if(this.click){
+          Button({
+            stateEffect: true,
+            type: ButtonType.Normal
+          }) {
+            Text($r('app.string.submit'))
+              .fontColor(Color.White)
+          }
+          .width(315)
+          .height(50)
+          .borderRadius(5)
+          .borderColor($r('app.color.button_background'))
+          // 当输入框内容发生变化时触发该函数
+          .onClick(async () => {
+            console.log("before")
+            this.taskType='todo'
+            let a=TaskHelper.getTaskContent(this.getTaskList())
+            console.log("after")
+            this.answer= await LLM.getHttpResult("根据以下设定的任务以不超过200个字做出总结与规划："+a)
+            this.click=false
+            //输出任务的信息
+          })}
           Blank()
             .height("10")
+          if(!this.click){
           Text("根据您已经设定的任务，我们得到：")
-          Text("AI测试")
+            Scroll(){
+          Text(this.answer)
             .card()
-            .backgroundColor("white")
+            .backgroundColor("white")}}
         }
       }
-
-
 }
     .backgroundColor(this.bgColor)
     .borderRadius(15)

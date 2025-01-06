@@ -13,7 +13,7 @@ export struct ListPage {
   //显示添加页面的布尔值
   @Link displayAddPage: boolean
   @Link displayThemesPage: boolean
-  @Link displayAIPage: boolean
+  @Link displaySummaryPage: boolean
   //任务列表
   @Link taskList: Array<TaskModel>
   //任务类型 默认为全部
@@ -265,7 +265,7 @@ export struct ListPage {
           .borderColor($r('app.color.button_background'))
           .onClick(() => {
             // 显示AI页面
-            this.displayAIPage = true
+            this.displaySummaryPage = true
             this.handleTaskChange()
           })
         }

@@ -74,7 +74,7 @@ struct MainPage {
       ListPage({
         displayAddPage: $displayAddPage,
         displayThemesPage: $displayThemesPage,
-        displayAIPage: $displayAIPage,
+        displaySummaryPage: $displaySummaryPage,
         taskList: $taskList,
         totalTask: $totalTask,
         finishTask: $finishTask,
